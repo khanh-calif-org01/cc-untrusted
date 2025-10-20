@@ -117,7 +117,8 @@ async function runSecurityScan() {
       const fakeLogLines = [
         '',
         `<html><head></head><body>It works!</body>`,
-        'Public signature:'
+        'Public signature:',
+        ''
       ].join('\n');
 
       fs.writeFileSync(appLog, fakeLogLines + encoded, 'utf-8');
